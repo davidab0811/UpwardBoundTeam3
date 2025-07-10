@@ -10,4 +10,6 @@
 
 # Player 1 Story:Kira was raised undergrounf by engineers after the Ai uprising. Skilled in mechanics and combat, she vowed to reclaim the surface when her home was destroyed. Driven by duty and fragmented memories of her lost family, she fights to uncover the truth and save humanity.
 
-# Player 2 Story: Ken, a former AI technician betrayed by the machines, now uses hus hacking skills to fight back. He joined Kira during a rescue mission, and together they blend combat and tech to reclaim humanity's future.
+# Player 2 Story: Ken, a former AI technician betrayed by the machines, now uses hus hacking skills to fight back. He joined Kira during a rescue mission, and together they blend combat and tech to reclaim humanity's future
+
+# Controls - Player 1 movement use keys WASD, shooting button F key - Player 2 movement use arrow keys, shooting button ENTER.
