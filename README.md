@@ -12,4 +12,6 @@
 
 # Player 2 Story: Ken, a former AI technician betrayed by the machines, now uses hus hacking skills to fight back. He joined Kira during a rescue mission, and together they blend combat and tech to reclaim humanity's future
 
-# Controls - Player 1 movement use keys WASD, shooting button F key - Player 2 movement use arrow keys, shooting button ENTER.
+# Controls - Player 1 movement use keys WASD, shooting button F key - Player 2 movement use arrow keys, shooting button ENTER
+
+# https://replit.com/@davidamador0111/UpwardBoundTeam3-DavidAmador
