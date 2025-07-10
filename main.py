@@ -14,7 +14,7 @@ INVINCIBILITY_TIME = 5000  # 5 seconds
 
 # --- Setup ---
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("2-Player Co-op Space Shooter")
+pygame.display.set_caption("Ooga Booga Shooter")
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("Arial", 30)
 
