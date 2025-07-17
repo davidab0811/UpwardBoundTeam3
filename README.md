@@ -16,5 +16,7 @@
 # Screens Game-Start - <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/699c8e08-a4d9-4503-adcb-94793dbad4e7" />
 # Screens Game-Over - <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/afba5f1d-959e-4d8f-a1ba-8ff77b7f2751" />
 
+# Game Play <img width="801" height="531" alt="image" src="https://github.com/user-attachments/assets/26f26d5d-903c-4750-b8f1-df0fa68ac069" />
+
 
 # https://replit.com/@davidamador0111/UpwardBoundTeam3-DavidAmador
