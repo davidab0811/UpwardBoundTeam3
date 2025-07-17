@@ -26,10 +26,12 @@ def load_image(name, size):
 images = {
     "player1": load_image("player1.png", (60, 60)),
     "player2": load_image("player2.png", (60, 60)),
-    "enemy": load_image("enemy.png", (50, 50)),
+    "enemy": load_image("enemy.png", (36, 36)),
     "boss": load_image("enemy.png", (150, 80)),  # reuse image
     "invincible": load_image("invincible.png", (30, 30)),
     "freeze": load_image("potionBottle.png", (30, 30)),
+    "gamestart": load_image("gamestart.png", (800, 600)),
+    "gameover": load_image("gameover.png", (800, 600))
 }
 
 background = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background.png")), (WIDTH, HEIGHT))
@@ -76,6 +78,7 @@ class Player(pygame.sprite.Sprite):
             self.image.set_alpha(255)
 
     def shoot(self):
+        if self.lives <= 0: return
         now = pygame.time.get_ticks()
         if now - self.last_shot > self.shoot_delay:
             bullets.add(Bullet(self.rect.centerx, self.rect.top))
@@ -128,13 +131,7 @@ class Boss(pygame.sprite.Sprite):
         self.hp -= 1
         return self.hp <= 0
 
-#Code for both bullet colors
-class Bullet(pygame.sprite.Sprite):
-    def __init__(self, x, y):
-        super().__init__()
-        self.image = pygame.Surface((6, 20))
-        self.image.fill((255, 255, 0))
-        self.rect = self.image.get_rect(center=(x, y))
+# Bullet class
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
@@ -170,7 +167,7 @@ powerups = pygame.sprite.Group()
 
 # --- Game State Setup ---
 def reset_game():
-    global p1, p2, score, wave, game_state, enemy_frozen_until
+    global p1, p2, score, wave, enemy_frozen_until
     players.empty(); bullets.empty(); enemies.empty(); bosses.empty(); powerups.empty()
     p1 = Player(WIDTH//3, HEIGHT-60, images["player1"], {
         "up":pygame.K_w,"down":pygame.K_s,"left":pygame.K_a,"right":pygame.K_d,"shoot":pygame.K_f})
@@ -178,9 +175,10 @@ def reset_game():
         "up":pygame.K_UP,"down":pygame.K_DOWN,"left":pygame.K_LEFT,"right":pygame.K_RIGHT,"shoot":pygame.K_RETURN})
     players.add(p1, p2)
     score, wave = 0, 0
-    game_state = "play"
     enemy_frozen_until = 0
 
+# Start state
+game_state = "start"
 reset_game()
 
 # --- Waves ---
@@ -197,13 +195,17 @@ pygame.time.set_timer(PU_EVENT, POWERUP_INTERVAL)
 running = True
 while running:
     clock.tick(FPS)
-    screen.blit(background, (0, 0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-        if game_state == "play":
+        if game_state == "start":
+            if event.type == pygame.MOUSEBUTTONDOWN:  # Click to start
+                reset_game()
+                game_state = "play"
+
+        elif game_state == "play":
             if event.type == ENEMY_EVENT and not bosses:
                 wave += 1
                 if wave in boss_waves:
@@ -216,10 +218,22 @@ while running:
                 powerups.add(PowerUp())
 
         elif game_state == "gameover":
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
-                reset_game()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    reset_game()
+                    game_state = "play"
+                elif event.key == pygame.K_q:
+                    running = False
 
-    if game_state == "play":
+    # --- Drawing ---
+    if game_state == "start":
+        screen.blit(images["gamestart"], (0, 0))
+        text = font.render("Click Anywhere to Start", True, (255, 255, 255))
+        screen.blit(text, (WIDTH//2 - text.get_width()//2, HEIGHT - 100))
+
+    elif game_state == "play":
+        screen.blit(background, (0, 0))
+
         keys = pygame.key.get_pressed()
         if keys[p1.controls["shoot"]]: p1.shoot()
         if keys[p2.controls["shoot"]]: p2.shoot()
@@ -257,13 +271,8 @@ while running:
         if p1.lives <= 0 and p2.lives <= 0:
             game_state = "gameover"
 
-        #Code to kill players when lives are 0.
-        if p1.lives == 0:
-            p1.kill()
-
-        if p2.lives == 0:
-            p2.kill()
-
+        if p1.lives == 0: p1.kill()
+        if p2.lives == 0: p2.kill()
 
         players.draw(screen); bullets.draw(screen)
         enemies.draw(screen); bosses.draw(screen); powerups.draw(screen)
@@ -277,8 +286,9 @@ while running:
             screen.blit(font.render("Enemies Frozen!", True, (0, 255, 255)), (WIDTH - 250, 20))
 
     elif game_state == "gameover":
-        screen.blit(font.render("GAME OVER", True, (255, 0, 0)), (WIDTH//2 - 100, HEIGHT//2 - 40))
-        screen.blit(font.render("Press R to Restart", True, (255, 255, 255)), (WIDTH//2 - 130, HEIGHT//2 + 10))
+        screen.blit(images["gameover"], (0, 0))
+        score_text = font.render(f"Final Score: {score}", True, (0, 0, 0))
+        screen.blit(score_text, (WIDTH//2 - score_text.get_width()//2, HEIGHT//2 - 100))
 
     pygame.display.flip()
 
