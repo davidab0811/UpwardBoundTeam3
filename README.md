@@ -16,6 +16,11 @@
 # Screens Game-Start - <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/699c8e08-a4d9-4503-adcb-94793dbad4e7" />
 # Screens Game-Over - <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/afba5f1d-959e-4d8f-a1ba-8ff77b7f2751" />
 
+# Team Thoughts
+- David - Something I learned during our time in this class was how to code a new part of the game in order to fit our opponents required hitbox and looks. Something I am proud of doing while working is when I was able to fix an error that occurred whenever the players would get near the opponents they would take damage even if they weren't within their direct box which was an error we were able to fix and improve on the game.
+- Elexis - Something I learned in this class was how to fix bugs indivually and how to use github and replit together in order to import files easily.
+- Connie - Something that I learned from this class is that your code can easily mess up from a few mistakes. It shows how I need to be observant when it comes to coding. What I'm most proud of from our game is the game design, the characters, and the music my team and I created. 
+
 # Game Play <img width="801" height="531" alt="image" src="https://github.com/user-attachments/assets/26f26d5d-903c-4750-b8f1-df0fa68ac069" />
 
 
