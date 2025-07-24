@@ -29,7 +29,7 @@ images = {
     "enemy": load_image("enemy.png", (36, 36)),
     "boss": load_image("enemy.png", (150, 80)),  # reuse image
     "invincible": load_image("invincible.png", (30, 30)),
-    "freeze": load_image("potionBottle.png", (30, 30)),
+    "freeze": load_image("potionBottlereal.png", (30, 30)),
     "gamestart": load_image("gamestart.png", (800, 600)),
     "gameover": load_image("gameover.png", (800, 600))
 }
