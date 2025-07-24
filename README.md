@@ -23,5 +23,11 @@
 
 # Game Play <img width="801" height="531" alt="image" src="https://github.com/user-attachments/assets/26f26d5d-903c-4750-b8f1-df0fa68ac069" />
 
+# Credits
+Mr. Arciga - Director
+David Amador - Battle Director and Story Writer
+Connie Sun - Lead Design Director and Sound Designer
+Elexis Guerra - Programming Director
+Luis Gonzalez - Tester
 
 # https://replit.com/@davidamador0111/UpwardBoundTeam3-DavidAmador
